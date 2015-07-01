@@ -57,9 +57,6 @@ namespace APIService.Controllers
         [HttpGet]
         public HttpResponseMessage DeleteProduct(string productid)
         {
-            if (!ApiVerification.VerificationNull(productid))
-                return JsonHelp.GetJsonContent(0, "参数不能为空");
-
             var product = this._iProductInfoService.Where(o => o.PdId.ToString() == productid).FirstOrDefault();
             if (product == null) return JsonHelp.GetJsonContent(0, "没有此商品");
             product.IsDelete = true;
@@ -111,9 +108,7 @@ namespace APIService.Controllers
         [HttpGet]
         public object GetProduct(string productid)
         {
-            if (!ApiVerification.VerificationNull(productid))
-                return JsonHelp.GetJsonContent(0, "参数不能为空");
-
+   
             // 先检查缓存
             DataProductInfo dataproduct = this._RedisCache.Get(productid);
             if (dataproduct != null) return dataproduct;
@@ -134,9 +129,7 @@ namespace APIService.Controllers
         [HttpGet]
         public object GetProducByProviderId(string account)
         {
-            if (!ApiVerification.VerificationNull(account))
-                return JsonHelp.GetJsonContent(0, "参数不能为空");
-
+  
             var provider = this._iProviderService.Where(o => o.Account.ToString() == account).FirstOrDefault();
             if (provider == null) return JsonHelp.GetJsonContent(0, "此供应商不存在");
 

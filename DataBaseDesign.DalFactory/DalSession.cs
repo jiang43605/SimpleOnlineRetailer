@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
+using System.Linq;
 using DataBaseDesign.IDal;
 
 namespace DataBaseDesign.DalFactory
@@ -26,13 +28,12 @@ namespace DataBaseDesign.DalFactory
         /// <summary>
         /// 返回查询的对象，参数需要构造形如“new SqlParameter("@h",h1)”
         /// </summary>
-        /// <param name="type"></param>
         /// <param name="sql"></param>
         /// <param name="parameters"></param>
         /// <returns></returns>
-        public DbRawSqlQuery SqlQuery(Type type, string sql, params object[] parameters)
+        public List<T> SqlQuery<T>(string sql, params object[] parameters)
         {
-            return this._DbContext.Database.SqlQuery(type, sql, parameters);
+            return this._DbContext.Database.SqlQuery<T>(sql, parameters).ToList();
         }
 
         /// <summary>
@@ -43,5 +44,8 @@ namespace DataBaseDesign.DalFactory
         {
             return this._DbContext.SaveChanges();
         }
+
+
+
     }
 }

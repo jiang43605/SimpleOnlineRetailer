@@ -26,8 +26,6 @@ namespace APIService.Controllers
         [HttpGet]
         public HttpResponseMessage RegisterAccount(string account, string password, string name)
         {
-            if (!ApiVerification.VerificationNull(account, password, name))
-                return JsonHelp.GetJsonContent(0, "参数不能为空");
 
             Provider provider = this._iProviderService.Where(o => o.Account == account).FirstOrDefault();
             if (provider != null) return JsonHelp.GetJsonContent(0, "此账户已经被注册");
@@ -62,9 +60,6 @@ namespace APIService.Controllers
         [Describe("供应商注册", "传入account（帐户名）即可获得该供应商家信息")]
         public object GetProvider(string account)
         {
-            if (!ApiVerification.VerificationNull(account))
-                return JsonHelp.GetJsonContent(0, "参数不能为空");
-
             // 从缓存中取出数据
             DataProvider dataprovider = this._RedisCache.Get(account);
             if (dataprovider != null) return dataprovider;

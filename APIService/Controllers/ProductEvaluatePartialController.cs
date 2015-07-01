@@ -44,9 +44,6 @@ namespace APIService.Controllers
         [HttpGet]
         public object GetProductEvaluateByPdId(string pdid)
         {
-            if (!ApiVerification.VerificationNull(pdid))
-                return JsonHelp.GetJsonContent(0, "参数不能为空");
-
             var dataproductEvaluate = this._iProductEvaluateService.Where(o => o.PdId.ToString() == pdid).ToList();
             return dataproductEvaluate;
         }

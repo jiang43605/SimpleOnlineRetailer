@@ -34,7 +34,7 @@ namespace APIService
     {
         public override void OnAuthorization(HttpActionContext actionContext)
         {
-           // base.OnAuthorization(actionContext);
+            // base.OnAuthorization(actionContext);
             string[] strings = actionContext.Request.RequestUri.Segments;
             string token = strings[strings.Length - 1];
             string assembly = "ApiAuthorityVerificationAssembly";
@@ -48,6 +48,7 @@ namespace APIService
 
     /// <summary>
     /// 处理运行API的前后操作，晚于AuthorizeAttribute
+    /// 实现了对参数不能为空特性的检测
     /// </summary>
     public class APIActionFilterAttribute : System.Web.Http.Filters.ActionFilterAttribute
     {
@@ -58,6 +59,15 @@ namespace APIService
         public override void OnActionExecuting(HttpActionContext actionContext)
         {
             base.OnActionExecuting(actionContext);
+
+            VerificationNullParameterAttribute vnp =
+                actionContext.ActionDescriptor.GetCustomAttributes<VerificationNullParameterAttribute>()
+                    .FirstOrDefault();
+            if (vnp == null) return;
+            var rountdata = actionContext.Request.GetRouteData().Values;
+            string[] pStrings = vnp.Paramameter.Select(o => (string)rountdata[o]).ToArray();
+            if (!ApiVerification.VerificationNull(pStrings))
+                actionContext.Response = JsonHelp.GetJsonContent(0, "参数不能为空");
         }
         /// <summary>
         /// Action之后

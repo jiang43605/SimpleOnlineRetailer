@@ -26,8 +26,6 @@ namespace APIService.Controllers
         [HttpGet]
         public HttpResponseMessage AddOrderInfo(string userid, string sellid)
         {
-            if (!ApiVerification.VerificationNull(userid, sellid))
-                return JsonHelp.GetJsonContent(0, "参数不能为空");
 
             var userInfo = this._iUserInfoService.Where(o => o.UserId.ToString() == userid).FirstOrDefault();
             if (userInfo == null) return JsonHelp.GetJsonContent(0, "没有此用户");
@@ -63,8 +61,6 @@ namespace APIService.Controllers
         [HttpGet]
         public HttpResponseMessage DeleteOrderInfo(string orderId)
         {
-            if (!ApiVerification.VerificationNull(orderId))
-                return JsonHelp.GetJsonContent(0, "参数不能为空");
 
             var product = this._iOrderInfoService.Where(o => o.OrderId.ToString() == orderId).FirstOrDefault();
             if (product == null) return JsonHelp.GetJsonContent(0, "没有此订单");
@@ -87,9 +83,6 @@ namespace APIService.Controllers
         [HttpGet]
         public object GetOrderInfoById(string orederid)
         {
-            if (!ApiVerification.VerificationNull(orederid))
-                return JsonHelp.GetJsonContent(0, "参数不能为空");
-
             // 缓存中取数据
             DataOrderInfo dataorderinfo = this._RedisCache.Get(orederid);
             if (dataorderinfo != null) return dataorderinfo;
@@ -110,9 +103,7 @@ namespace APIService.Controllers
         [HttpGet]
         public object GetOrderInfoByUserId(string userid)
         {
-            if (!ApiVerification.VerificationNull(userid))
-                return JsonHelp.GetJsonContent(0, "参数不能为空");
-
+         
             var orderinfo = this._iUserInfoService.Where(o => o.UserId.ToString() == userid).FirstOrDefault();
             if (orderinfo == null) return JsonHelp.GetJsonContent(0, "该用户不存在");
 

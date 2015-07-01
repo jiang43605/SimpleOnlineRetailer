@@ -28,8 +28,8 @@ namespace DataBaseDesign.IDal
         /// <param name="sql"></param>
         /// <param name="parameters"></param>
         /// <returns></returns>
-        DbRawSqlQuery SqlQuery(Type type, string sql, params object[] parameters);
-        
+        List<T> SqlQuery<T>(string sql, params object[] parameters);
+
         /// <summary>
         /// 保存更改
         /// </summary>

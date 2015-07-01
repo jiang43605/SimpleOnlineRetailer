@@ -17,7 +17,7 @@ namespace APIService
             // 将 Web API 配置为仅使用不记名令牌身份验证。
             config.SuppressDefaultHostAuthentication();
             config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
-          //  config.Filters.Add(new APIExceptionFilterAttribute());
+            //  config.Filters.Add(new APIExceptionFilterAttribute());
 
             // 仅保留Json返回格式
             config.Formatters.XmlFormatter.SupportedMediaTypes.Clear();

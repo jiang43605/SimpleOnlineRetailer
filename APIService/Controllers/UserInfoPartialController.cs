@@ -25,9 +25,6 @@ namespace APIService.Controllers
         [HttpGet]
         public HttpResponseMessage CreatAccount(string account, string password)
         {
-            if (!ApiVerification.VerificationNull(account, password))
-                return JsonHelp.GetJsonContent(0, "参数不能为空");
-
             UserInfo userInfo = this._iUserInfoService.Where(o => o.Account == account).FirstOrDefault();
             if (userInfo != null) return JsonHelp.GetJsonContent(0, "此账户已经被注册");
 
@@ -58,9 +55,6 @@ namespace APIService.Controllers
         [HttpGet]
         public object GetUserInfoByAccount(string account)
         {
-            if (!ApiVerification.VerificationNull(account))
-                return JsonHelp.GetJsonContent(0, "参数不能为空");
-
             // 先查看缓存是否有
             DataUserInfo userinfocache = this._RedisCache.Get(account);
 
@@ -119,9 +113,6 @@ namespace APIService.Controllers
         [HttpGet]
         public HttpResponseMessage LogoutAccount(string account)
         {
-            if (!ApiVerification.VerificationNull(account))
-                return JsonHelp.GetJsonContent(0, "参数不能为空");
-
             UserInfo userInfo = this._iUserInfoService.Where(o => o.Account == account).FirstOrDefault();
             if (userInfo == null) return JsonHelp.GetJsonContent(0, "此账户本就不存在");
 

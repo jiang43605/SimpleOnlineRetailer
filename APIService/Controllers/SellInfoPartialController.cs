@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -50,9 +51,6 @@ namespace APIService.Controllers
         [HttpGet]
         public HttpResponseMessage PutAway(string pdid, string describe)
         {
-            if (!ApiVerification.VerificationNull(pdid, describe))
-                return JsonHelp.GetJsonContent(0, "参数不能为空");
-
             var productinfo = this._iProductInfoService.Where(o => o.PdId.ToString() == pdid).FirstOrDefault();
             if (productinfo == null) return JsonHelp.GetJsonContent(0, "尝试上架的商品在库中并未找到");
 
@@ -106,9 +104,6 @@ namespace APIService.Controllers
         [HttpGet]
         public HttpResponseMessage OutAway(string sellid)
         {
-            if (!ApiVerification.VerificationNull(sellid))
-                return JsonHelp.GetJsonContent(0, "参数不能为空");
-
             var s = this._iSellInfoService.Where(o => o.SellId.ToString() == sellid).FirstOrDefault();
             if (s == null) return JsonHelp.GetJsonContent(0, "该商品未上过架");
 
@@ -119,6 +114,16 @@ namespace APIService.Controllers
                 ? JsonHelp.GetJsonContent(200, "下架成功")
                 : JsonHelp.GetJsonContent(0, "下架失败");
 
+        }
+
+        [Route("GetProductByDescribe/{describe}")]
+        [Describe("已上架商品", "Get请求，通过匹配描述里面的关键字，来返回相应的上架商品")]
+        [HttpGet]
+        public object GetProductByDescribe(string describe)
+        {
+            List<SellInfo> list = this._iSellInfoService.GetProductByDescribe(describe).ToList();
+
+            return Mapper.Map<List<DataSellInfo>>(list);
         }
     }
 }

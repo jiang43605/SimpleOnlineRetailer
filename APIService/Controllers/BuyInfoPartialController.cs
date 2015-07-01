@@ -135,9 +135,6 @@ namespace APIService.Controllers
         [HttpGet]
         public object GetBuyInfoByUserId(string userid)
         {
-            if (!ApiVerification.VerificationNull(userid))
-                return JsonHelp.GetJsonContent(0, "参数不能为空");
-
             var userinfo = this._iUserInfoService.Where(o => o.UserId.ToString() == userid).FirstOrDefault();
             if (userinfo == null) return JsonHelp.GetJsonContent(0, "该用户不存在");
 

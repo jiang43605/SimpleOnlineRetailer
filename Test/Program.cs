@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data.Entity;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.Remoting;
@@ -26,24 +28,35 @@ namespace Test
     {
         static void Main(string[] args)
         {
-            ProductInfoService productInfo = new ProductInfoService();
-            IProviderService providerService = new ProviderService();
-            var provider = providerService.Where(o => o.Account == "alibaba").FirstOrDefault();
-            ProductInfo p = new ProductInfo
-            {
-                PdId = Guid.NewGuid(),
-                PdName = "测试",
-                PdNum = 10,
-                ProductDescribe = "这是测试商品",
-                PdPrice = 23,
-                SubTime = DateTime.Now,
-            };
-            p.Provider.Add(provider);
-          bool bl =  productInfo.Add(p);
-            bl.ToString(); 
 
 
-            string[] serverlist = { "127.0.0.1:11211" };
+            //const string sql = "select * from SellInfo where Describe like @ke";
+
+            //DataBaseDesignModelContainer data = new DataBaseDesignModelContainer();
+            //var t = data.Database.SqlQuery(typeof(SellInfo), sql, "%大家%").Cast<SellInfo>().ToList();
+            ////    DalSessionFac.GetDalSession()
+            ////        .SqlQuery(typeof (SellInfo), sql,"大家")
+            ////        .Cast<SellInfo>().ToList();
+
+            //t.ToString();
+            //  ProductInfoService productInfo = new ProductInfoService();
+            //  IProviderService providerService = new ProviderService();
+            //  var provider = providerService.Where(o => o.Account == "alibaba").FirstOrDefault();
+            //  ProductInfo p = new ProductInfo
+            //  {
+            //      PdId = Guid.NewGuid(),
+            //      PdName = "测试",
+            //      PdNum = 10,
+            //      ProductDescribe = "这是测试商品",
+            //      PdPrice = 23,
+            //      SubTime = DateTime.Now,
+            //  };
+            //  p.Provider.Add(provider);
+            //bool bl =  productInfo.Add(p);
+            //  bl.ToString(); 
+
+
+            //  string[] serverlist = { "127.0.0.1:11211" };
 
             //初始化池
             //SockIOPool pool = SockIOPool.GetInstance();
@@ -70,20 +83,19 @@ namespace Test
             //SockIOPool.GetInstance().Shutdown();
 
             #region 3
-            RedisCache<ProductInfo> yu = new ProductInfoRCache();
 
-            var ds = yu.Get("fd2deada-2bbd-4d27-a77f-cbb9412b3c81");
-            Console.WriteLine(ds);
+            //var ds = yu.Get("fd2deada-2bbd-4d27-a77f-cbb9412b3c81");
+            //Console.WriteLine(ds);
             //UserInfo userInfo = new UserInfo
             //{
             //    UserId = Guid.NewGuid(),
             //    Name = "chengfisgod"
             //};
-            var client = new RedisClient();
-            
+            //var client = new RedisClient();
+
             //Console.WriteLine(userInfo.Name);
             // //Console.WriteLine(client.Get<string>("dasda"));
-            client.Set("bcbf0c5b-8450-4988-b61b-f140c4d27a4e", "dasdsa");
+            //client.Set("bcbf0c5b-8450-4988-b61b-f140c4d27a4e", "dasdsa");
             // //Console.WriteLine(client.GetAllEntriesFromHash("userid")["name"]);
             // //client.RemoveEntry("userid");
             // //Console.WriteLine(client.Get<UserInfo>("haha").Name);
