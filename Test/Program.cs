@@ -40,7 +40,7 @@ namespace Test
             };
             p.Provider.Add(provider);
           bool bl =  productInfo.Add(p);
-            bl.ToString();
+            bl.ToString(); 
 
 
             string[] serverlist = { "127.0.0.1:11211" };
