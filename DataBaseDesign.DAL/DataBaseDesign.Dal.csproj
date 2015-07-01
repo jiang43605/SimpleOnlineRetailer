@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1F94B81B-AD64-4F35-BF7A-2EC5901A1D31}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DataBaseDesign.Dal</RootNamespace>
+    <AssemblyName>DataBaseDesign.Dal</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <DocumentationFile>
+    </DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net40\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ApiAuthorityVerificationDal.cs">
+      <DependentUpon>Dal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BaseDal.cs" />
+    <Compile Include="BuyInfoDal.cs">
+      <DependentUpon>Dal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Dal.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Dal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OrderInfoDal.cs">
+      <DependentUpon>Dal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProductEvaluateDal.cs">
+      <DependentUpon>Dal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProductInfoDal.cs">
+      <DependentUpon>Dal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ProviderDal.cs">
+      <DependentUpon>Dal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SellInfoDal.cs">
+      <DependentUpon>Dal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserInfoDal.cs">
+      <DependentUpon>Dal.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="Dal.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Dal.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DataBaseDesign.Common\DataBaseDesign.Common.csproj">
+      <Project>{41201cea-0aa2-4853-bed4-76e528eb9a46}</Project>
+      <Name>DataBaseDesign.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataBaseDesign.DalFactory\DataBaseDesign.DalFactory.csproj">
+      <Project>{6cbdd5de-0f17-41df-adfc-7a4574b23d6f}</Project>
+      <Name>DataBaseDesign.DalFactory</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataBaseDesign.IDal\DataBaseDesign.IDal.csproj">
+      <Project>{cf3f004e-e961-4f1a-86c1-66d37bc85537}</Project>
+      <Name>DataBaseDesign.IDal</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataBaseDesign.Model\DataBaseDesign.Model.csproj">
+      <Project>{1fd50d2e-73b7-4357-855c-f3c43620912e}</Project>
+      <Name>DataBaseDesign.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

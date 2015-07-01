@@ -1,0 +1,167 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DataBaseDesign.IDal</name>
+    </assembly>
+    <members>
+        <member name="T:DataBaseDesign.IDal.IApiAuthorityVerificationDal">
+            <summary>
+            the ApiAuthorityVerification interface
+            </summary>
+        </member>
+        <member name="T:DataBaseDesign.IDal.IBaseDal`1">
+            <summary>
+            数据层基类接口
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:DataBaseDesign.IDal.IBaseDal`1.Add(`0)">
+            <summary>
+            添加单个对象
+            </summary>
+            <param name="t"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBaseDesign.IDal.IBaseDal`1.AddRange(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            添加一组对象
+            </summary>
+            <param name="tlist"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBaseDesign.IDal.IBaseDal`1.DeleteEntry(`0)">
+            <summary>
+            删除
+            </summary>
+            <param name="t"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBaseDesign.IDal.IBaseDal`1.UpdataEntry(`0)">
+            <summary>
+            修改
+            </summary>
+            <param name="t"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBaseDesign.IDal.IBaseDal`1.Where(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            查询（针对数据库的表达式树）
+            </summary>
+            <param name="expression"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBaseDesign.IDal.IBaseDal`1.Where(System.Func{`0,System.Boolean})">
+            <summary>
+            普通查询方式
+            </summary>
+            <param name="func"></param>
+            <returns></returns>
+        </member>
+        <member name="T:DataBaseDesign.IDal.IBuyInfoDal">
+            <summary>
+            the BuyInfo interface
+            </summary>
+        </member>
+        <member name="T:DataBaseDesign.IDal.IDalSession">
+            <summary>
+            会话层接口
+            </summary>
+            <summary>
+            IDalSession的部分类
+            </summary>
+        </member>
+        <member name="M:DataBaseDesign.IDal.IDalSession.ExecuteSqlCommand(System.String,System.Object[])">
+            <summary>
+            执行操作SQL语句，参数可直接写，也可以传递构造SqlParameter类
+            </summary>
+            <param name="sql"></param>
+            <param name="objects"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBaseDesign.IDal.IDalSession.SqlQuery(System.Type,System.String,System.Object[])">
+            <summary>
+            返回查询的对象，参数需要构造形如“new SqlParameter("@h",h1)”
+            </summary>
+            <param name="type"></param>
+            <param name="sql"></param>
+            <param name="parameters"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBaseDesign.IDal.IDalSession.SavaChanges">
+            <summary>
+            保存更改
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:DataBaseDesign.IDal.IDalSession.GetApiAuthorityVerificationDal">
+            <summary>
+            获得ApiAuthorityVerification对象
+            </summary>	
+        </member>
+        <member name="P:DataBaseDesign.IDal.IDalSession.GetBuyInfoDal">
+            <summary>
+            获得BuyInfo对象
+            </summary>	
+        </member>
+        <member name="P:DataBaseDesign.IDal.IDalSession.GetOrderInfoDal">
+            <summary>
+            获得OrderInfo对象
+            </summary>	
+        </member>
+        <member name="P:DataBaseDesign.IDal.IDalSession.GetProductEvaluateDal">
+            <summary>
+            获得ProductEvaluate对象
+            </summary>	
+        </member>
+        <member name="P:DataBaseDesign.IDal.IDalSession.GetProductInfoDal">
+            <summary>
+            获得ProductInfo对象
+            </summary>	
+        </member>
+        <member name="P:DataBaseDesign.IDal.IDalSession.GetProviderDal">
+            <summary>
+            获得Provider对象
+            </summary>	
+        </member>
+        <member name="P:DataBaseDesign.IDal.IDalSession.GetSellInfoDal">
+            <summary>
+            获得SellInfo对象
+            </summary>	
+        </member>
+        <member name="P:DataBaseDesign.IDal.IDalSession.GetUserInfoDal">
+            <summary>
+            获得UserInfo对象
+            </summary>	
+        </member>
+        <member name="T:DataBaseDesign.IDal.IOrderInfoDal">
+            <summary>
+            the OrderInfo interface
+            </summary>
+        </member>
+        <member name="T:DataBaseDesign.IDal.IProductEvaluateDal">
+            <summary>
+            the ProductEvaluate interface
+            </summary>
+        </member>
+        <member name="T:DataBaseDesign.IDal.IProductInfoDal">
+            <summary>
+            the ProductInfo interface
+            </summary>
+        </member>
+        <member name="T:DataBaseDesign.IDal.IProviderDal">
+            <summary>
+            the Provider interface
+            </summary>
+        </member>
+        <member name="T:DataBaseDesign.IDal.ISellInfoDal">
+            <summary>
+            the SellInfo interface
+            </summary>
+        </member>
+        <member name="T:DataBaseDesign.IDal.IUserInfoDal">
+            <summary>
+            the UserInfo interface
+            </summary>
+        </member>
+    </members>
+</doc>

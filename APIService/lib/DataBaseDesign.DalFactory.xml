@@ -1,0 +1,98 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DataBaseDesign.DalFactory</name>
+    </assembly>
+    <members>
+        <member name="T:DataBaseDesign.DalFactory.DalSession">
+            <summary>
+            内部默认的DalSession实例
+            </summary>
+        </member>
+        <member name="M:DataBaseDesign.DalFactory.DalSession.ExecuteSqlCommand(System.String,System.Object[])">
+            <summary>
+            执行操作SQL语句，参数可直接写，也可以传递构造SqlParameter类
+            </summary>
+            <param name="sql"></param>
+            <param name="objects"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBaseDesign.DalFactory.DalSession.SqlQuery(System.Type,System.String,System.Object[])">
+            <summary>
+            返回查询的对象，参数需要构造形如“new SqlParameter("@h",h1)”
+            </summary>
+            <param name="type"></param>
+            <param name="sql"></param>
+            <param name="parameters"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBaseDesign.DalFactory.DalSession.SavaChanges">
+            <summary>
+            保存更改
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:DataBaseDesign.DalFactory.DalSession.GetApiAuthorityVerificationDal">
+            <summary>
+            获得IApiAuthorityVerificationDal的实例
+            </summary>
+        </member>
+        <member name="P:DataBaseDesign.DalFactory.DalSession.GetBuyInfoDal">
+            <summary>
+            获得IBuyInfoDal的实例
+            </summary>
+        </member>
+        <member name="P:DataBaseDesign.DalFactory.DalSession.GetOrderInfoDal">
+            <summary>
+            获得IOrderInfoDal的实例
+            </summary>
+        </member>
+        <member name="P:DataBaseDesign.DalFactory.DalSession.GetProductEvaluateDal">
+            <summary>
+            获得IProductEvaluateDal的实例
+            </summary>
+        </member>
+        <member name="P:DataBaseDesign.DalFactory.DalSession.GetProductInfoDal">
+            <summary>
+            获得IProductInfoDal的实例
+            </summary>
+        </member>
+        <member name="P:DataBaseDesign.DalFactory.DalSession.GetProviderDal">
+            <summary>
+            获得IProviderDal的实例
+            </summary>
+        </member>
+        <member name="P:DataBaseDesign.DalFactory.DalSession.GetSellInfoDal">
+            <summary>
+            获得ISellInfoDal的实例
+            </summary>
+        </member>
+        <member name="P:DataBaseDesign.DalFactory.DalSession.GetUserInfoDal">
+            <summary>
+            获得IUserInfoDal的实例
+            </summary>
+        </member>
+        <member name="T:DataBaseDesign.DalFactory.DalSessionFac">
+            <summary>
+            创建IDalSession的实例
+            </summary>
+        </member>
+        <member name="M:DataBaseDesign.DalFactory.DalSessionFac.GetDalSession">
+            <summary>
+            获得DalSession对象
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:DataBaseDesign.DalFactory.DbContextFac">
+            <summary>
+            生产DbContext，并保证线程内对象的唯一
+            </summary>
+        </member>
+        <member name="M:DataBaseDesign.DalFactory.DbContextFac.GetDbContext">
+            <summary>
+            创建EF对象
+            </summary>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

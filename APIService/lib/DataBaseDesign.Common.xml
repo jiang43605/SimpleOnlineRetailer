@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DataBaseDesign.Common</name>
+    </assembly>
+    <members>
+        <member name="T:DataBaseDesign.Common.CreatInstanceHelp">
+            <summary>
+            创建实例帮助类
+            </summary>
+        </member>
+        <member name="M:DataBaseDesign.Common.CreatInstanceHelp.CreatInstanceByUrl``1(System.String,System.String)">
+            <summary>
+            根据url创建指定的T对象，出现错误将返回null（包括程序集不存在等）
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="assemblyurl"></param>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBaseDesign.Common.CreatInstanceHelp.CreatInstanceByConfig``1(System.String,System.String)">
+            <summary>
+            根据配置文件创建实例，assemblykey表示程序集key的名称，classkey表示类key的名称（此value应该包括命名空间）
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="assemblykey"></param>
+            <param name="classkey"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBaseDesign.Common.CreatInstanceHelp.CreatInstanceByConfigOnlyUserAssemblyName``1(System.String,System.String)">
+            <summary>
+            根据配置文件创建实例，assemblykey表示程序集key的名称（直接写程序集名称即可），classkey表示类key的名称（此value应该包括命名空间），
+            创建的实例需要都放置于网站根目录下的lib文件夹中
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="assemblykey"></param>
+            <param name="classkey"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBaseDesign.Common.CreatInstanceHelp.CreatInstanceByUrlOnlyUserAssemblyName``1(System.String,System.String)">
+            <summary>
+            根据url创建指定的T对象（assemblyurl仅需输入程序集名称即可，因为默认到网站根目录下的lib文件夹中去寻找），
+            出现错误将返回null（包括程序集不存在等）
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="assemblyurl"></param>
+            <param name="classkey"></param>
+            <returns></returns>
+        </member>
+        <member name="T:DataBaseDesign.Common.ReadConfigHelp">
+            <summary>
+            读取配置文件帮助类
+            </summary>
+        </member>
+        <member name="M:DataBaseDesign.Common.ReadConfigHelp.GetAppSettingsVualeUseSplit(System.String,System.Char)">
+            <summary>
+            根据key获得AppSettings的value
+            </summary>
+            <param name="key"></param>
+            <param name="c"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

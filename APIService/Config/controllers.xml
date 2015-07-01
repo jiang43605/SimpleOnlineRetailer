@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<objects xmlns="http://www.springframework.net">
+	<!--ApiAuthorityVerificationController-->
+	<object type="APIService.Controllers.ApiAuthorityVerificationController, APIService" singleton="false" >
+    <property name="_iApiAuthorityVerificationService" ref="ApiAuthorityVerificationService"/>
+	</object>
+	<object type="DataBaseDesign.Service.ApiAuthorityVerificationService, DataBaseDesign.Service" singleton="false" name="ApiAuthorityVerificationService"></object>
+
+  <!--BuyInfoController-->
+	<object type="APIService.Controllers.BuyInfoController, APIService" singleton="false" >
+    <property name="_iBuyInfoService" ref="BuyInfoService"/>
+    <property name="_iUserInfoService" ref="UserInfoService"/>
+	</object>
+	<object type="DataBaseDesign.Service.BuyInfoService, DataBaseDesign.Service" singleton="false" name="BuyInfoService"></object>
+
+  <!--OrderInfoController-->
+	<object type="APIService.Controllers.OrderInfoController, APIService" singleton="false" >
+    <property name="_iOrderInfoService" ref="OrderInfoService"/>
+    <property name="_iUserInfoService" ref="UserInfoService"/>
+    <property name="_iSellInfoService" ref="SellInfoService"/>
+  </object>
+	<object type="DataBaseDesign.Service.OrderInfoService, DataBaseDesign.Service" singleton="false" name="OrderInfoService"></object>
+
+  <!--ProductEvaluateController-->
+	<object type="APIService.Controllers.ProductEvaluateController, APIService" singleton="false" >
+    <property name="_iProductEvaluateService" ref="ProductEvaluateService"/>
+	</object>
+	<object type="DataBaseDesign.Service.ProductEvaluateService, DataBaseDesign.Service" singleton="false" name="ProductEvaluateService"></object>
+
+  <!--ProductInfoController-->
+	<object type="APIService.Controllers.ProductInfoController, APIService" singleton="false" >
+    <property name="_iProductInfoService" ref="ProductInfoService"/>
+    <property name="_iProviderService" ref="ProviderService"/>
+	</object>
+	<object type="DataBaseDesign.Service.ProductInfoService, DataBaseDesign.Service" singleton="false" name="ProductInfoService"></object>
+
+  <!--ProviderController-->
+	<object type="APIService.Controllers.ProviderController, APIService" singleton="false" >
+    <property name="_iProviderService" ref="ProviderService"/>
+    <property name="_iUserInfoService" ref="UserInfoService"/>
+	</object>
+	<object type="DataBaseDesign.Service.ProviderService, DataBaseDesign.Service" singleton="false" name="ProviderService"></object>
+
+  <!--SellInfoController-->
+	<object type="APIService.Controllers.SellInfoController, APIService" singleton="false" >
+    <property name="_iSellInfoService" ref="SellInfoService"/>
+    <property name="_iProductInfoService" ref="ProductInfoService"/>
+	</object>
+	<object type="DataBaseDesign.Service.SellInfoService, DataBaseDesign.Service" singleton="false" name="SellInfoService"></object>
+
+  <!--UserInfoController-->
+	<object type="APIService.Controllers.UserInfoController, APIService" singleton="false" >
+    <property name="_iUserInfoService" ref="UserInfoService"/>
+	</object>
+	<object type="DataBaseDesign.Service.UserInfoService, DataBaseDesign.Service" singleton="false" name="UserInfoService"></object>
+</objects>

@@ -1,0 +1,127 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DataBaseDesign.IService</name>
+    </assembly>
+    <members>
+        <member name="T:DataBaseDesign.IService.IApiAuthorityVerificationService">
+            <summary>
+            the ApiAuthorityVerification Service interface
+            </summary>
+        </member>
+        <member name="T:DataBaseDesign.IService.IBaseService`1">
+            <summary>
+            Service基类接口
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:DataBaseDesign.IService.IBaseService`1.Add(`0)">
+            <summary>
+            增加单个
+            </summary>
+            <param name="t"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBaseDesign.IService.IBaseService`1.AddRange(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            按范围增加
+            </summary>
+            <param name="tlist"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBaseDesign.IService.IBaseService`1.DeleteEntry(`0)">
+            <summary>
+            删除
+            </summary>
+            <param name="t"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBaseDesign.IService.IBaseService`1.UpdataEntry(`0)">
+            <summary>
+            修改
+            </summary>
+            <param name="t"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBaseDesign.IService.IBaseService`1.Where(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            查询
+            </summary>
+            <param name="expression"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBaseDesign.IService.IBaseService`1.LoadPageEntities``1(System.Int32,System.Int32,System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Boolean)">
+            <summary>
+            分页查询，不返回总数目
+            </summary>
+            <typeparam name="s"></typeparam>
+            <param name="pageIndex"></param>
+            <param name="pageSize"></param>
+            <param name="whereLambda"></param>
+            <param name="orderLambda"></param>
+            <param name="isAsc"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBaseDesign.IService.IBaseService`1.LoadPageEntities``1(System.Int32,System.Int32,System.Int32@,System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Boolean)">
+            <summary>
+            分页查询，返回总数目totalcount
+            </summary>
+            <typeparam name="s"></typeparam>
+            <param name="pageIndex"></param>
+            <param name="pageSize"></param>
+            <param name="totalcount"></param>
+            <param name="whereLambda"></param>
+            <param name="orderLambda"></param>
+            <param name="isAsc"></param>
+            <returns></returns>
+        </member>
+        <member name="T:DataBaseDesign.IService.IBuyInfoService">
+            <summary>
+            the BuyInfo Service interface
+            </summary>
+        </member>
+        <member name="T:DataBaseDesign.IService.IOrderInfoService">
+            <summary>
+            the OrderInfo Service interface
+            </summary>
+        </member>
+        <member name="T:DataBaseDesign.IService.IProductEvaluateService">
+            <summary>
+            the ProductEvaluate Service interface
+            </summary>
+        </member>
+        <member name="T:DataBaseDesign.IService.IProductInfoService">
+            <summary>
+            the ProductInfo Service interface
+            </summary>
+        </member>
+        <member name="T:DataBaseDesign.IService.IProviderService">
+            <summary>
+            the Provider Service interface
+            </summary>
+        </member>
+        <member name="M:DataBaseDesign.IService.IProviderService.CreatAccount(DataBaseDesign.Model.Provider)">
+            <summary>
+            创建一个新的帐号
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:DataBaseDesign.IService.ISellInfoService">
+            <summary>
+            the SellInfo Service interface
+            </summary>
+        </member>
+        <member name="T:DataBaseDesign.IService.IUserInfoService">
+            <summary>
+            the UserInfo Service interface
+            </summary>
+        </member>
+        <member name="M:DataBaseDesign.IService.IUserInfoService.CreatAccount(DataBaseDesign.Model.UserInfo)">
+            <summary>
+            创建一个新帐号
+            </summary>
+            <param name="userInfo"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

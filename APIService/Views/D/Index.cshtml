@@ -1,0 +1,72 @@
+﻿@using APIService.Models;
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/DataBaseDesign.css" rel="stylesheet" />
+    <title>Index</title>
+</head>
+<body>
+    <header>
+        <div class="site-header jumbotron">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h1>DataBaseDesign API</h1>
+                        <p>这是一个内部的API展示页，通过这些API可以达到直接操作底层数据的目的</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div style="background-color: gainsboro">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12" style="text-align: center">
+                    <h4>
+                        <span class="glyphicon glyphicon-ok-circle glyphicon-color-green" aria-hidden="true"></span>&nbsp;
+                        表示此API可用&nbsp;&nbsp;&nbsp;
+                        <span class="glyphicon glyphicon-remove-circle glyphicon-color-red" aria-hidden="true"></span>&nbsp;
+                        表示此API不可用
+                        &nbsp;&nbsp;&nbsp;
+                        <span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span>&nbsp;
+                        表示此API还没完全发布
+                    </h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    <main class="packages-list-container">
+        <div class="container">
+            <div class="list-group">
+                @foreach (ApiDescribeModel str in Model)
+                {
+                if (str == null){<hr style="border:1px dashed #0094ff" /> continue;}
+                <a href="@str.ViewApiUrl" class="list-group-item list-group-bord">
+                    <div class="row">
+                        <div class="col-md-3" style="margin-top: 20px">
+                            <h4 class="package-h4">
+                                <span class="@str.Glyphicon" aria-hidden="true"></span>&nbsp;
+                                @str.Head
+                            </h4>
+                        </div>
+                        <div class="col-md-9 hidden-xs">
+                            <p class="package-description">
+                                <span class="glyphicon glyphicon-link" aria-hidden="true"></span>&nbsp;
+                                <ins>@(str.ApiUrl)</ins>
+                            </p><br />
+                            <p class="package-description package-description-b">
+                                <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>&nbsp;
+                                @str.DescribeItem
+                            </p>
+                        </div>
+                    </div>
+                </a>
+                }
+            </div>
+        </div>
+    </main>
+</body>
+</html>
