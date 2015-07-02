@@ -67,7 +67,7 @@ namespace DataBaseDesignSDK
         {
             Cf_HttpWeb _httpweb = new Cf_HttpWeb();
             _httpweb.EncodingSet = "utf-8";
-            string url = "http://localhost:32839/api/restful/OrderInfo/GetOrderInfo/userid" + userid;
+            string url = "http://localhost:32839/api/restful/OrderInfo/GetOrderInfo/" + userid;
             string str = _httpweb.PostOrGet(url, HttpMethod.GET).HtmlValue;
             if (str.Contains("\"StatusCode\":0")) return null;
             return JsonConvert.DeserializeObject<List<OrderInfo>>(str);

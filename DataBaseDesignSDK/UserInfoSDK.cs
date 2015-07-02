@@ -15,8 +15,9 @@ namespace DataBaseDesignSDK
 
         public ResponseMsg CreatAccount(string account, string password)
         {
+            if (ApiV.IsNull(account, password)) return ApiV.EMsg();
             Cf_HttpWeb _httpweb = new Cf_HttpWeb();
-            _httpweb.EncodingSet = "utf-8";;
+            _httpweb.EncodingSet = "utf-8"; ;
             string url = string.Format("http://localhost:32839/api/restful/UserInfo/CreatAccount/{0}/{1}", account, password);
             string str = _httpweb.PostOrGet(url, HttpMethod.GET).HtmlValue;
             return JsonConvert.DeserializeObject<ResponseMsg>(str);
@@ -31,7 +32,7 @@ namespace DataBaseDesignSDK
         public UserInfo GetUserInfoByAccount(string account)
         {
             Cf_HttpWeb _httpweb = new Cf_HttpWeb();
-            _httpweb.EncodingSet = "utf-8";;
+            _httpweb.EncodingSet = "utf-8"; ;
             string url = string.Format("http://localhost:32839/api/restful/UserInfo/GetUserInfoByAccount/{0}", account);
             string str = _httpweb.PostOrGet(url, HttpMethod.GET).HtmlValue;
             if (str.Contains("\"StatusCode\":0")) return null;
@@ -46,7 +47,7 @@ namespace DataBaseDesignSDK
         public ResponseMsg UpdataAccount(int? age, string name, string phone, bool? sex)
         {
             Cf_HttpWeb _httpweb = new Cf_HttpWeb();
-            _httpweb.EncodingSet = "utf-8";;
+            _httpweb.EncodingSet = "utf-8"; ;
             UserInfo userInfo = new UserInfo
             {
                 Age = age,
@@ -70,10 +71,22 @@ namespace DataBaseDesignSDK
         public ResponseMsg LogoutAccount(string account)
         {
             Cf_HttpWeb _httpweb = new Cf_HttpWeb();
-            _httpweb.EncodingSet = "utf-8";; 
+            _httpweb.EncodingSet = "utf-8"; ;
             string url = "http://localhost:32839/api/restful/UserInfo/LogoutAccount/" + account;
             string str = _httpweb.PostOrGet(url, HttpMethod.GET).HtmlValue;
             return JsonConvert.DeserializeObject<ResponseMsg>(str);
+        }
+        /// <summary>
+        /// 获得所有用户信息
+        /// </summary>
+        /// <returns></returns>
+        public List<UserInfo> GetAllUserInfoForAdmin()
+        {
+            Cf_HttpWeb _httpweb = new Cf_HttpWeb();
+            _httpweb.EncodingSet = "utf-8"; ;
+            string url = "http://localhost:32839/api/restful/GetAllUserInfoForAdmin";
+            string str = _httpweb.PostOrGet(url, HttpMethod.GET).HtmlValue;
+            return JsonConvert.DeserializeObject<List<UserInfo>>(str);
         }
 
     }

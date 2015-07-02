@@ -15,6 +15,7 @@ namespace APIService.Controllers
     {
         private IUserInfoService _iUserInfoService { set; get; }
         private ISellInfoService _iSellInfoService { set; get; }
+        private IProductInfoService _iProductInfoService { set; get; }
         /// <summary>
         /// 创建一个订单
         /// </summary>
@@ -33,6 +34,10 @@ namespace APIService.Controllers
             var sellinfo = this._iSellInfoService.Where(o => o.SellId.ToString() == sellid).FirstOrDefault();
             if (sellinfo == null) return JsonHelp.GetJsonContent(0, "没有此商品");
 
+            var productInfo = this._iProductInfoService.Where(o => o.PdId == sellinfo.PdId).FirstOrDefault();
+            if (productInfo == null) return JsonHelp.GetJsonContent(0, "商品数据和上架商品数据出现不一致");
+            if (productInfo.PdNum <= 0) return JsonHelp.GetJsonContent(0, "商品已经售罄");
+
             OrderInfo orderInfo = new OrderInfo
             {
                 CreatTime = DateTime.Now,
@@ -46,9 +51,13 @@ namespace APIService.Controllers
             // 缓存
             this._RedisCache.Set(orderInfo.OrderId.ToString(), Mapper.Map<DataOrderInfo>(orderInfo));
 
-            return this._iOrderInfoService.Add(orderInfo)
-                ? JsonHelp.GetJsonContent(200, "添加成功")
-                : JsonHelp.GetJsonContent(0, "添加失败");
+            if (this._iOrderInfoService.Add(orderInfo))
+            {
+                productInfo.PdNum--;
+                this._iProductInfoService.UpdataEntry(productInfo);
+                return JsonHelp.GetJsonContent(200, "添加成功");
+            }
+            return JsonHelp.GetJsonContent(0, "添加失败");
         }
 
         /// <summary>
@@ -103,7 +112,7 @@ namespace APIService.Controllers
         [HttpGet]
         public object GetOrderInfoByUserId(string userid)
         {
-         
+
             var orderinfo = this._iUserInfoService.Where(o => o.UserId.ToString() == userid).FirstOrDefault();
             if (orderinfo == null) return JsonHelp.GetJsonContent(0, "该用户不存在");
 

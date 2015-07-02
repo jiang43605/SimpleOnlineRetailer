@@ -29,7 +29,22 @@ namespace DataBaseDesignSDK
             if (str.Contains("\"StatusCode\":0")) return null;
             return JsonConvert.DeserializeObject<List<SellInfo>>(str);
         }
+        /// <summary>
+        /// 根据sellid返回商品
+        /// </summary>
+        /// <param name="sellid"></param>
+        /// <returns></returns>
+        public SellInfo GetSellInfoById(string sellid)
+        {
+            if (ApiV.IsNull(sellid)) return null;
 
+            Cf_HttpWeb _httpweb = new Cf_HttpWeb();
+            _httpweb.EncodingSet = "utf-8";
+            string url = string.Format("http://localhost:32839/api/restful/SellInfo/GetSellInfoById/{0}", sellid);
+            string str = _httpweb.PostOrGet(url, HttpMethod.GET).HtmlValue;
+            if (str.Contains("\"StatusCode\":0")) return null;
+            return JsonConvert.DeserializeObject<SellInfo>(str);
+        }
         /// <summary>
         /// 上架一件商品
         /// </summary>

@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="ApiAuthorityVerification.cs" />
     <Compile Include="ApiAuthorityVerificationSDK.cs" />
+    <Compile Include="ApiV.cs" />
     <Compile Include="BuyInfo.cs" />
     <Compile Include="BuyInfoSDK.cs" />
     <Compile Include="OrderInfo.cs" />

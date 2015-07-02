@@ -18,6 +18,7 @@
     <property name="_iOrderInfoService" ref="OrderInfoService"/>
     <property name="_iUserInfoService" ref="UserInfoService"/>
     <property name="_iSellInfoService" ref="SellInfoService"/>
+    <property name="_iProductInfoService" ref="ProductInfoService"/>
   </object>
   <object type="DataBaseDesign.Service.OrderInfoService, DataBaseDesign.Service" singleton="false" name="OrderInfoService"></object>
 

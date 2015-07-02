@@ -41,6 +41,22 @@ namespace APIService.Controllers
         }
 
         /// <summary>
+        /// 根据sellid返回商品
+        /// </summary>
+        /// <param name="sellid"></param>
+        /// <returns></returns>
+        [Route("GetSellInfoById/{sellid}")]
+        [Describe("已上架商品", "Get请求，根据上架商品ID来获得相应商品信息")]
+        [HttpGet]
+        public object GetSellInfoById(string sellid)
+        {
+            var s = this._iSellInfoService.Where(o => o.SellId.ToString() == sellid).FirstOrDefault();
+            if (s == null) return JsonHelp.GetJsonContent(0, "该商品不存在");
+
+            return Mapper.Map<DataSellInfo>(s);
+        }
+
+        /// <summary>
         /// 上架一件商品
         /// </summary>
         /// <param name="pdid"></param>
@@ -116,13 +132,17 @@ namespace APIService.Controllers
 
         }
 
+        /// <summary>
+        /// 根据关键字放回对应商品
+        /// </summary>
+        /// <param name="describe"></param>
+        /// <returns></returns>
         [Route("GetProductByDescribe/{describe}")]
         [Describe("已上架商品", "Get请求，通过匹配描述里面的关键字，来返回相应的上架商品")]
         [HttpGet]
         public object GetProductByDescribe(string describe)
         {
             List<SellInfo> list = this._iSellInfoService.GetProductByDescribe(describe).ToList();
-
             return Mapper.Map<List<DataSellInfo>>(list);
         }
     }

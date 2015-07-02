@@ -126,5 +126,18 @@ namespace APIService.Controllers
                 ? JsonHelp.GetJsonContent(200, "注销成功")
                 : JsonHelp.GetJsonContent(0, "注销失败");
         }
+
+        /// <summary>
+        /// 获得所有用户信息
+        /// </summary>
+        /// <returns></returns>
+        [Route("GetAllUserInfoForAdmin")]
+        [Describe("Admin", "Get请求，用于管理员，获得所有用户的信息")]
+        [HttpGet]
+        public List<DataUserInfo> GetAllUserInfoForAdmin()
+        {
+            List<UserInfo> userInfos = this._iUserInfoService.Where(o => true).ToList();
+            return Mapper.Map<List<DataUserInfo>>(userInfos);
+        }
     }
 }
